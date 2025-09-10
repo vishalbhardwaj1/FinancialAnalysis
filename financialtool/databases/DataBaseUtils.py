@@ -7,7 +7,7 @@ from sqlite3 import Connection
 def get_company_ticker_data():
     print("Fetching company ticker data from database")
     conn = connect_to_db()
-    read_query = "Select * from CompanyList"
+    read_query = "Select * from Company_List"
     data = read_data_from_db(conn, read_query)
     company_names = []
     for (company, ticker) in data:
@@ -17,7 +17,7 @@ def get_company_ticker_data():
 
 def add_new_company (company_data):
     conn = connect_to_db()
-    read_query = "Select * from CompanyList"
+    read_query = "Select * from Company_List"
     data = read_data_from_db(conn, read_query)
     for companyInfo in company_data:
         company_name = companyInfo["CompanyName"]
