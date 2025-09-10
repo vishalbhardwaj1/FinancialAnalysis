@@ -4,7 +4,7 @@ from financialtool.databases.DataBaseUtils import *
 data = get_company_ticker_data()
 for ticker in data:
     stock = yf.Ticker(ticker)
-    hist = stock.history(period="5d")
+    hist = stock.history(period="max")
     batch = []
     for index, row in hist.iterrows():
         batch.append((
