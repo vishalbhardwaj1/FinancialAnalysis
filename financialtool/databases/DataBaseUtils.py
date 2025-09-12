@@ -145,3 +145,21 @@ def create_historical_data_table_for_company(conn, table_name):
     """)
     conn.commit()
 
+def get_last_date_for_company(ticker):
+    conn = connect_to_db()
+    table_name = "Historical_Data_" + ticker
+    if not table_exists(conn, table_name):
+        print(f"Error: Table {table_name} does not exist.")
+        disconnect_from_db(conn)
+        return None
+
+    cursor = conn.cursor()
+    cursor.execute(f"""
+        SELECT Date FROM {table_name} ORDER BY Date DESC LIMIT 1
+    """)
+    result = cursor.fetchone()
+    disconnect_from_db(conn)
+    if result:
+        return result[0]
+    else:
+        return None
