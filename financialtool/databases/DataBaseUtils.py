@@ -32,7 +32,7 @@ def check_and_add_company(conn, company_name, company_ticker, data):
             is_company_in_db = True
             break
     if not is_company_in_db:
-        add_data_in_company_list_query = "Insert INTO CompanyList (CompanyName, Ticker) Values (\"" + company_name +  "\" , \"" + company_ticker + "\")"
+        add_data_in_company_list_query = "Insert INTO Company_List (CompanyName, Ticker) Values (\"" + company_name +  "\" , \"" + company_ticker + "\")"
         add_data_in_db(conn, add_data_in_company_list_query)
         print("Company " + company_name + " added to the Database with ticker : " + company_ticker)
     conn.commit()
