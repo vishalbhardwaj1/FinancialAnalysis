@@ -8,7 +8,7 @@ for ticker in data:
     date = get_last_date_for_company(ticker)
     if date and date != datetime.date.today().strftime('%Y-%m-%d'):
         print(f"Fetching data for {ticker} since {date}...")
-        hist = stock.history(start=date, interval="1d")
+        hist = stock.history(period="max")
         hist = hist[1:]
     elif date == datetime.date.today().strftime('%Y-%m-%d'):
         print(f"Data for {ticker} is already up to date.")
